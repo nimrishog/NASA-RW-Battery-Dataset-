@@ -1,0 +1,48 @@
+{
+  "batteries": {
+    "RW9": {
+      "steps": 113578,
+      "sample_rows": 8532073,
+      "charge_random_walk_rows": 3869140,
+      "discharge_random_walk_rows": 3737664,
+      "reference_charge_rows": 148156,
+      "reference_discharge_rows": 37400,
+      "rest_rows": 541514,
+      "reference_discharge_steps": 80
+    },
+    "RW10": {
+      "steps": 110818,
+      "sample_rows": 8596025,
+      "charge_random_walk_rows": 3901880,
+      "discharge_random_walk_rows": 3778994,
+      "reference_charge_rows": 138239,
+      "reference_discharge_rows": 37632,
+      "rest_rows": 538159,
+      "reference_discharge_steps": 77
+    },
+    "RW11": {
+      "steps": 109389,
+      "sample_rows": 8664510,
+      "charge_random_walk_rows": 3920908,
+      "discharge_random_walk_rows": 3817817,
+      "reference_charge_rows": 136335,
+      "reference_discharge_rows": 38101,
+      "rest_rows": 545595,
+      "reference_discharge_steps": 77
+    },
+    "RW12": {
+      "steps": 110013,
+      "sample_rows": 8638882,
+      "charge_random_walk_rows": 3896344,
+      "discharge_random_walk_rows": 3742208,
+      "reference_charge_rows": 124161,
+      "reference_discharge_rows": 44102,
+      "rest_rows": 595998,
+      "reference_discharge_steps": 76
+    }
+  },
+  "total_steps": 443798,
+  "total_sample_rows": 34431490,
+  "qc_issue_counts": {},
+  "output_dir": "c:\\Users\\nimri\\Downloads\\BatteryData\\raw_mat_extraction_exports"
+}

@@ -1,0 +1,30 @@
+{
+  "shap_background_train_samples": 128,
+  "shap_test_samples_per_event_type": 200,
+  "lime_num_samples": 5000,
+  "lime_num_features": 15,
+  "top10_transformer_global_shap": [
+    "time_start",
+    "time_end",
+    "label_charge_count",
+    "sample_count",
+    "duration_s",
+    "charge_throughput_ah",
+    "energy_throughput_wh",
+    "temperature_start_c",
+    "event_type_discharge",
+    "temperature_pdf_q25"
+  ],
+  "top10_lightgbm_global_shap": [
+    "time_start",
+    "label_charge_count",
+    "time_end",
+    "temperature_end_c",
+    "dtemp_dt_max_abs_cps",
+    "temperature_mean_c",
+    "temperature_start_c",
+    "dq_dv_min_ahpv",
+    "temperature_pdf_q75",
+    "temperature_pdf_min"
+  ]
+}

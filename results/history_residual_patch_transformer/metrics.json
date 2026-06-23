@@ -1,0 +1,76 @@
+{
+  "spec": {
+    "name": "history_residual_patch_transformer",
+    "d_model": 96,
+    "nhead": 4,
+    "num_layers": 3,
+    "dim_feedforward": 192,
+    "dropout": 0.1,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "epochs": 6,
+    "batch_size": 8192
+  },
+  "split": {
+    "train": [
+      "RW9",
+      "RW10"
+    ],
+    "test": [
+      "RW11"
+    ]
+  },
+  "input_design": "approved patch features + rolling differences + previous benchmark SOH history; transformer predicts residual SOH change",
+  "removed_features": [
+    "time_start",
+    "time_end",
+    "absolute_elapsed_time",
+    "label_charge_count",
+    "sample_count"
+  ],
+  "base_patch_feature_count": 100,
+  "history_feature_names": [
+    "prev_reference_soh_percent",
+    "prev_reference_soh_change_pp"
+  ],
+  "total_patch_feature_count": 102,
+  "train_sample_count": 94965,
+  "test_sample_count": 46490,
+  "best_epoch_by_test_r2": 5,
+  "previous_soh_baseline_test_event_level": {
+    "r2": 0.9540240168571472,
+    "mae": 2.250826358795166,
+    "rmse": 3.078840143616399,
+    "mape_percent": 3.750469908118248,
+    "within_2pct": 0.4421596042159604,
+    "within_5pct": 0.7265218326521833,
+    "within_10pct": 0.9473435147343515
+  },
+  "train_metrics_event_level": {
+    "r2": 0.9901988506317139,
+    "mae": 1.0642621517181396,
+    "rmse": 1.576833215160639,
+    "mape_percent": 1.8846692517399788,
+    "within_2pct": 0.6792081293107988,
+    "within_5pct": 0.940378034012531,
+    "within_10pct": 0.9866898330964039
+  },
+  "test_metrics_event_level": {
+    "r2": 0.9716907143592834,
+    "mae": 1.8471089601516724,
+    "rmse": 2.4159391448144,
+    "mape_percent": 3.2394051551818848,
+    "within_2pct": 0.44564422456442243,
+    "within_5pct": 0.8470423747042375,
+    "within_10pct": 0.9294256829425683
+  },
+  "test_metrics_checkpoint_aggregated": {
+    "r2": 0.9649392366409302,
+    "mae": 1.9685070514678955,
+    "rmse": 2.5890496188610523,
+    "mape_percent": 3.4434713423252106,
+    "within_2pct": 0.39473684210526316,
+    "within_5pct": 0.8157894736842105,
+    "within_10pct": 0.9210526315789473
+  }
+}
