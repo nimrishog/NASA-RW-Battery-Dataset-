@@ -120,7 +120,7 @@ def make_comparison_figure(rnn_row: dict[str, object]) -> None:
     labels = ["Charge-count\nridge", "Elapsed-time\nridge", "Throughput\nridge", "Vanilla RNN", "Transformer"]
     event_values = [6.3239388179, 6.4443129346, 5.8497431669, float(rnn_row["event_rmse"]), 3.0388083070]
     checkpoint_values = [6.3991515883, 6.5508148138, 6.0601048653, float(rnn_row["checkpoint_rmse"]), 2.5350211038]
-    colors = ["#8da0cb", "#8da0cb", "#8da0cb", "#a6d854", "#2f80ed"]
+    colors = ["#8da0cb", "#8da0cb", "#8da0cb", "#5b8cc9", "#2f80ed"]
     x = np.arange(len(labels))
     width = 0.36
     fig, ax = plt.subplots(figsize=(10.8, 5.8))
