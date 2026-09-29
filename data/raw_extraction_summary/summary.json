@@ -29,20 +29,10 @@
       "reference_discharge_rows": 38101,
       "rest_rows": 545595,
       "reference_discharge_steps": 77
-    },
-    "RW12": {
-      "steps": 110013,
-      "sample_rows": 8638882,
-      "charge_random_walk_rows": 3896344,
-      "discharge_random_walk_rows": 3742208,
-      "reference_charge_rows": 124161,
-      "reference_discharge_rows": 44102,
-      "rest_rows": 595998,
-      "reference_discharge_steps": 76
     }
   },
-  "total_steps": 443798,
-  "total_sample_rows": 34431490,
+  "total_steps": 333785,
+  "total_sample_rows": 25792608,
   "qc_issue_counts": {},
-  "output_dir": "c:\\Users\\nimri\\Downloads\\BatteryData\\raw_mat_extraction_exports"
+  "output_dir": "data/extracted"
 }

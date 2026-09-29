@@ -5,9 +5,4 @@ scikit-learn
 matplotlib
 torch
 shap
-lime
-openpyxl
-xlsxwriter
-python-pptx
-lightgbm
 

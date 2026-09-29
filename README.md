@@ -1,118 +1,74 @@
-# NASA RW Battery Dataset SOH Modeling
+# Event-Window Transformer for Battery SOH Estimation
 
-This repository contains the validated NASA randomized-walk battery data workflow used for battery state-of-health (SOH) modeling.
+This repository contains only the data, code, figures, and numerical results used in the associated manuscript on event-window Transformer state-of-health (SOH) estimation under randomized charge-discharge operation.
 
-The work covers:
+## Study scope
 
-- source `.mat` battery files
-- verified Excel exports from the `.mat` files
-- MATLAB extraction and validation scripts
-- preprocessing and feature-engineering scripts
-- transformer and baseline model scripts
-- tested model outputs
-- XAI outputs using permutation importance, SHAP-style attribution, and LIME
-- final presentation/report assets
+- NASA randomized-use cells: RW9, RW10, and RW11
+- Primary transfer split: RW9 and RW10 for model development; RW11 held out for testing
+- Complete leave-one-cell-out Transformer evaluation across RW9-RW11
+- Sparse-label comparisons: next reference, previous reference, charge-count interpolation, and cumulative-Ah-throughput interpolation
+- Transformer window-length, feature-group, local dQ/dV, and block-weighting ablations
+- Controlled vanilla recurrent neural network baseline
+- Gradient SHAP global attribution and LIME local explanations
 
-## Data
-
-Validated battery files:
-
-```text
-data/raw_mat/RW9.mat
-data/raw_mat/RW10.mat
-data/raw_mat/RW11.mat
-data/raw_mat/RW12.mat
-```
-
-Verified Excel exports:
-
-```text
-data/validated_excel/RW9.xlsx
-data/validated_excel/RW10.xlsx
-data/validated_excel/RW11.xlsx
-data/validated_excel/RW12.xlsx
-```
-
-The Excel workbooks were validated against the original `.mat` files using SHA-256 hashes for metadata, step index, time, relativeTime, voltage, current, and temperature. See:
-
-```text
-data/validated_excel/VALIDATION_NOTE.md
-```
-
-## Main Modeling Split
-
-The final charge+discharge top-20 transformer workflow used:
-
-```text
-Train/validation source: RW9 + RW10
-Validation: 10% stratified windows from RW9 + RW10
-Held-out test: RW11
-RW12: unused in that final model
-```
-
-## Method Summary
-
-1. Extract source `.mat` files into validated per-battery Excel workbooks and raw CSV summaries.
-2. Compute reference-discharge capacity labels from controlled reference-discharge steps.
-3. Convert capacity to SOH:
-
-```text
-SOH (%) = 100 * reference_discharge_capacity / initial_reference_discharge_capacity
-```
-
-4. Build charge/discharge random-walk event-level features from voltage, current, relative time, and event direction.
-5. Train transformer models on chronological windows of random-walk events.
-6. Evaluate on held-out RW11.
-7. Interpret model behavior with global and local XAI outputs.
-
-## Key Results
-
-Final charge+discharge top-20 transformer, RW11 held-out test:
-
-```text
-Event-level R2: 0.9551
-Event-level MAE: 2.387% SOH
-Checkpoint R2: 0.9664
-Checkpoint MAE: 2.069% SOH
-```
-
-History-residual patch transformer, RW11 held-out test:
-
-```text
-Event-level R2: 0.9717
-Event-level MAE: 1.847% SOH
-Checkpoint R2: 0.9649
-Checkpoint MAE: 1.969% SOH
-```
-
-## Repository Layout
+## Repository layout
 
 ```text
 data/
-  raw_mat/
-  validated_excel/
-  raw_extraction_summary/
+  raw_mat/                 RW9-RW11 source MATLAB files
+  raw_extraction_summary/  extraction validation and reference-capacity summary
+  modeling/                RW9-RW11 event-feature table used by the models
 scripts/
-docs/
+  extract_rw_raw_mat_pipeline.py
+  event_data.py
+  run_transformer_loco.py
+  run_controlled_rnn.py
+  run_transformer_ablations.py
+  run_transformer_xai.py
 results/
-  analysis/
-  final_charge_discharge_top20_xai/
-  history_residual_patch_transformer/
-  charge_discharge_model_comparisons/
-  award/
+  primary_transformer/     primary RW9/RW10-to-RW11 outputs
+  reviewer_validation/     LOCO, recurrent baseline, and ablation metrics
+  manuscript_figures/      figures cited in the manuscript
 ```
 
-## Large Files
+## Modeling data
 
-Large data/model/report artifacts are tracked with Git LFS. The multi-GB raw extracted CSV files are not committed because they are reproducible from the `.mat` files using:
+`data/modeling/event_features_rw9_rw11.csv` contains one row per extracted random-walk charge or discharge event. The model inputs are event descriptors derived from voltage, current, relative time, duration, throughput, energy, power, event direction, and local charge-voltage behavior. Capacity and SOH are retained only as diagnostic targets and are not model inputs.
 
-```text
-scripts/extract_rw_raw_mat_pipeline.py
+The primary target assigns each operating event to the next available reference-discharge SOH measurement. Alternative target rules are constructed in `scripts/event_data.py` and evaluated by separate Transformer retraining.
+
+## Reproducing the reported analyses
+
+Create an environment and install the dependencies:
+
+```bash
+python -m venv .venv
+python -m pip install -r requirements.txt
 ```
 
-The extraction summary and validation reports are included under:
+Run the main analyses from the repository root:
 
-```text
-data/raw_extraction_summary/
+```bash
+python scripts/run_transformer_loco.py
+python scripts/run_controlled_rnn.py
+python scripts/run_transformer_ablations.py
+python scripts/run_transformer_xai.py
 ```
 
+The Transformer scripts use fixed seed 42, training-only feature clipping and standardization, SOH-stratified internal validation from the development cells, inverse reference-block weighting where specified, weighted Huber loss, and validation-R2 checkpoint selection. The held-out cell is excluded from preprocessing, fitting, and checkpoint selection.
+
+## Primary reported results
+
+For RW9/RW10 development and held-out RW11 testing:
+
+| Evaluation scale | R2 | MAE | RMSE |
+|---|---:|---:|---:|
+| Event window | 0.9551 | 2.387 | 3.039 |
+| Diagnostic checkpoint | 0.9664 | 2.069 | 2.535 |
+
+MAE and RMSE are SOH percentage points. Complete machine-readable results are under `results/`.
+
+## Data source
+
+The raw files are from the NASA Randomized Battery Usage dataset. Users should cite the NASA dataset and the associated manuscript when reusing this workflow.

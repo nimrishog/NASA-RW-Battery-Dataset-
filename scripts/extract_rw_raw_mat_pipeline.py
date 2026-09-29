@@ -11,8 +11,8 @@ import numpy as np
 import scipy.io
 
 
-BASE = Path(r"c:\Users\nimri\Downloads\BatteryData")
-DEFAULT_BATTERIES = ("RW9", "RW10", "RW11", "RW12")
+BASE = Path(__file__).resolve().parents[1] / "data" / "raw_mat"
+DEFAULT_BATTERIES = ("RW9", "RW10", "RW11")
 DATE_FORMATS = ("%d-%b-%Y %H:%M:%S", "%d-%b-%Y")
 VECTOR_FIELDS = ("relativeTime", "time", "voltage", "current", "temperature")
 VALID_TYPES = {"C", "D", "R"}
@@ -61,19 +61,19 @@ def parse_args() -> argparse.Namespace:
         "--base-dir",
         type=Path,
         default=BASE,
-        help="Directory containing RW9.mat, RW10.mat, RW11.mat, RW12.mat",
+        help="Directory containing RW9.mat, RW10.mat, and RW11.mat",
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=BASE / "raw_mat_extraction_exports",
+        default=Path(__file__).resolve().parents[1] / "data" / "extracted",
         help="Directory where CSV exports will be written",
     )
     parser.add_argument(
         "--batteries",
         nargs="+",
         default=list(DEFAULT_BATTERIES),
-        help="Battery IDs to process, e.g. RW9 RW10 RW11 RW12",
+        help="Battery IDs to process, e.g. RW9 RW10 RW11",
     )
     return parser.parse_args()
 
@@ -302,7 +302,6 @@ This folder contains a clean extraction of the raw MATLAB files:
 - `RW9.mat`
 - `RW10.mat`
 - `RW11.mat`
-- `RW12.mat`
 
 ## Raw MATLAB structure
 
