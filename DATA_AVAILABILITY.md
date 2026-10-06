@@ -18,8 +18,8 @@ The raw source data remain subject to the terms and policies of their original p
 
 ## Archival release
 
-The verified `v1.0.1` release is permanently archived on Zenodo with DOI [10.5281/zenodo.23179284](https://doi.org/10.5281/zenodo.23179284). The GitHub repository remains the development location, while the Zenodo record is the citable, versioned research archive.
+The verified `v1.0.1` software release is permanently archived on Zenodo with DOI [10.5281/zenodo.23179284](https://doi.org/10.5281/zenodo.23179284). The verified processed RW9-RW11 event dataset is published as a separate open-access Zenodo record with DOI [10.5281/zenodo.23180066](https://doi.org/10.5281/zenodo.23180066). The dataset archive contains the event-feature table, reference-discharge capacity records, extraction summaries, quality-control report, documentation, and file checksums.
 
 ## Suggested manuscript statement
 
-The source data are available from the NASA Randomized Battery Usage dataset. The code, processed RW9-RW11 event-feature table, trained-model outputs, evaluation tables, and figure-generation resources supporting this study are available in the project repository at https://github.com/nimrishog/NASA-RW-Battery-Dataset- and are permanently archived on Zenodo at https://doi.org/10.5281/zenodo.23179284.
+The original RW9, RW10, and RW11 measurements are available from the NASA Randomized Battery Usage dataset. The processed event-level dataset and reference-discharge capacity records supporting this study are openly available on Zenodo at https://doi.org/10.5281/zenodo.23180066. The analysis code, trained-model outputs, evaluation tables, and figure-generation resources are available at https://github.com/nimrishog/NASA-RW-Battery-Dataset- and are archived on Zenodo at https://doi.org/10.5281/zenodo.23179284.

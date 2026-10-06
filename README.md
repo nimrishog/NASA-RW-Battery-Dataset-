@@ -1,10 +1,13 @@
 # Event-Window Transformer for Battery SOH Estimation
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23179284.svg)](https://doi.org/10.5281/zenodo.23179284)
+[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23179284.svg)](https://doi.org/10.5281/zenodo.23179284)
+[![Dataset DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23180066.svg)](https://doi.org/10.5281/zenodo.23180066)
 
 This repository contains the data, code, model outputs, numerical results, and figures used in the associated manuscript on event-window Transformer state-of-health (SOH) estimation under randomized charge-discharge operation.
 
 The archived `v1.0.1` research-software release is available from Zenodo at [https://doi.org/10.5281/zenodo.23179284](https://doi.org/10.5281/zenodo.23179284).
+
+The verified processed RW9-RW11 event dataset is available as a separate open-access Zenodo record at [https://doi.org/10.5281/zenodo.23180066](https://doi.org/10.5281/zenodo.23180066).
 
 ## Study scope
 
@@ -101,7 +104,7 @@ MAE and RMSE are SOH percentage points. Machine-readable predictions, metrics, t
 
 ## Data availability
 
-The source MATLAB files originate from the NASA Randomized Battery Usage dataset. The repository includes RW9-RW11 source files, extraction summaries, the processed event-feature table, model outputs, and figure source tables to support reproducibility. See [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md) for provenance, redistribution, and archival guidance.
+The source MATLAB files originate from the NASA Randomized Battery Usage dataset. The verified processed RW9-RW11 event dataset is archived separately on Zenodo under DOI [10.5281/zenodo.23180066](https://doi.org/10.5281/zenodo.23180066). This repository provides the extraction and modeling code, model outputs, and figure source tables needed to support reproducibility. See [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md) for provenance and archival details.
 
 ## Licensing
 

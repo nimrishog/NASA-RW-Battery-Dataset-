@@ -22,5 +22,12 @@
     "prognostics and health management",
     "randomized battery usage",
     "explainable artificial intelligence"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.5281/zenodo.23180066",
+      "relation": "isSupplementedBy",
+      "resource_type": "dataset"
+    }
   ]
 }
