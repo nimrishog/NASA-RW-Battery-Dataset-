@@ -117,9 +117,19 @@ def prepare_split(events: pd.DataFrame):
 
 
 def make_comparison_figure(rnn_row: dict[str, object]) -> None:
+    OUT.mkdir(parents=True, exist_ok=True)
+    baseline_path = ROOT / "results" / "reviewer_validation" / "trend_baselines" / "trend_baseline_metrics.csv"
+    if not baseline_path.exists():
+        raise FileNotFoundError(
+            f"Missing {baseline_path}. Run `python scripts/run_trend_baselines.py` before this script."
+        )
+    baseline = pd.read_csv(baseline_path).set_index("model")
+    baseline_order = ["charge_count_ridge", "elapsed_time_ridge", "throughput_ridge"]
     labels = ["Charge-count\nridge", "Elapsed-time\nridge", "Throughput\nridge", "Vanilla RNN", "Transformer"]
-    event_values = [6.3239388179, 6.4443129346, 5.8497431669, float(rnn_row["event_rmse"]), 3.0388083070]
-    checkpoint_values = [6.3991515883, 6.5508148138, 6.0601048653, float(rnn_row["checkpoint_rmse"]), 2.5350211038]
+    event_values = [float(baseline.loc[name, "event_rmse"]) for name in baseline_order]
+    checkpoint_values = [float(baseline.loc[name, "checkpoint_rmse"]) for name in baseline_order]
+    event_values.extend([float(rnn_row["event_rmse"]), 3.0388083069706244])
+    checkpoint_values.extend([float(rnn_row["checkpoint_rmse"]), 2.535021103840701])
     colors = ["#2f80ed"] * len(labels)
     x = np.arange(len(labels))
     width = 0.36
@@ -138,6 +148,9 @@ def make_comparison_figure(rnn_row: dict[str, object]) -> None:
     ax.grid(axis="y", alpha=0.25)
     fig.tight_layout()
     fig.savefig(OUT / "fig_controlled_neural_baseline_rmse.png", dpi=300)
+    manuscript_figures = ROOT / "results" / "manuscript_figures"
+    manuscript_figures.mkdir(parents=True, exist_ok=True)
+    fig.savefig(manuscript_figures / "fig_controlled_neural_baseline_rmse.png", dpi=300)
     plt.close(fig)
 
 

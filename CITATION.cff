@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the associated manuscript and the archived software release."
+title: "Event-Window Transformer for Lithium-Ion Battery State-of-Health Estimation Under Randomized Usage"
+type: software
+authors:
+  - family-names: Nimri
+    given-names: Shoog
+  - family-names: Renteria
+    given-names: Anabel
+  - family-names: Kohtz
+    given-names: Sara
+repository-code: "https://github.com/nimrishog/NASA-RW-Battery-Dataset-"
+license: MIT
+version: 1.0.0
+date-released: 2026-10-06

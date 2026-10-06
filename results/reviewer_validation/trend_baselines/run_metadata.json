@@ -1,0 +1,6 @@
+{
+  "target": "next-reference SOH",
+  "preprocessing": "StandardScaler fitted on RW9/RW10 only",
+  "estimator": "Ridge(alpha=1.0)",
+  "evaluation": "RW11 event-window endpoints and diagnostic-checkpoint averages"
+}
