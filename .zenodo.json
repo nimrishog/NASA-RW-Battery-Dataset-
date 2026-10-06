@@ -1,0 +1,26 @@
+{
+  "title": "Event-Window Transformer for Lithium-Ion Battery State-of-Health Estimation Under Randomized Usage",
+  "description": "Reproducibility code, processed modeling data, trained-model outputs, evaluation results, and manuscript figures for event-window Transformer state-of-health estimation using NASA randomized battery usage cells RW9, RW10, and RW11.",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Nimri, Shoog"
+    },
+    {
+      "name": "Renteria, Anabel"
+    },
+    {
+      "name": "Kohtz, Sara"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "keywords": [
+    "lithium-ion battery",
+    "state of health",
+    "Transformer",
+    "prognostics and health management",
+    "randomized battery usage",
+    "explainable artificial intelligence"
+  ]
+}
