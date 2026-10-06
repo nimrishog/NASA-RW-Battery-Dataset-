@@ -1,6 +1,10 @@
 # Event-Window Transformer for Battery SOH Estimation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23179284.svg)](https://doi.org/10.5281/zenodo.23179284)
+
 This repository contains the data, code, model outputs, numerical results, and figures used in the associated manuscript on event-window Transformer state-of-health (SOH) estimation under randomized charge-discharge operation.
+
+The archived `v1.0.1` research-software release is available from Zenodo at [https://doi.org/10.5281/zenodo.23179284](https://doi.org/10.5281/zenodo.23179284).
 
 ## Study scope
 
